@@ -1,0 +1,67 @@
+.column{
+      float:left;
+      width:50%;
+  }
+
+.row{
+  width:100%;
+  text-align: center;
+}
+  .transition-button {
+     border: none;
+     background: #404040;
+     color: #ffffff;
+     font-weight: 100;
+     padding: 20px;
+     border-radius: 6px;
+     display: inline-block;
+     text-decoration:none;
+     height:260px;
+     width:260px;
+ }
+ .transition-button:hover {
+       text-decoration:none;
+       color:white;
+   }
+   .oldtext,
+    .newtext {
+        display: block;
+        overflow: hidden;
+        transition: all .5s ease-in;
+        text-align:center;
+
+    }
+       .oldtext{
+           height:auto;
+           opacity:1;
+           width:auto;
+           font-size:52px;
+       }
+       .newtext{
+           height:0;
+           opacity:0;
+           width:0;
+           font-size:80px;
+       }
+       .transition-button:hover .oldtext{
+           height:0;
+           opacity:0;
+           width:0;
+       }
+       .transition-button:hover .newtext{
+           height:auto;
+           opacity:1;
+           width:auto;
+       }
+ #serena{
+   background-size: cover;
+   background-image: url("ser.jpg");
+   float:right;
+   margin-right:50px;
+ }
+ #tanisa{
+   float:left;
+   margin-left:50px;
+   background-size: cover;
+background-image: url("tan.jpg");
+}

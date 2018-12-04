@@ -1,0 +1,45 @@
+var app=angular.module("Contest",[]);
+app.controller('ContestController',['$scope',function($scope){
+  $scope.sere;
+  $scope.tan;
+  console.log("hey");
+  $.ajax({
+    url:'serena.txt',
+    async:false,
+    success:function(response){
+      console.log('hey');
+      $scope.sere=response;
+    }
+  });
+  console.log("Test");
+  $.ajax({
+    url:"tanisa.txt",
+    datatype:'text',
+    success:function(data){
+      console.log(data);
+      $scope.tan=data;
+    },
+    error:function(){alert("error");}
+  });
+  $scope.serena=function(){
+    $.ajax({
+      type:'POST',
+      url:'serena.txt',
+      data:$scope.sere+1,
+      success:(response)=>{
+        $scope.sere++;
+      }
+    });
+  }
+  $scope.tanisa=function(){
+    $.ajax({
+      type:'POST',
+      url:'tanisa.txt',
+      data:$scope.tan+1,
+      success:(response)=>{
+        $scope.tan++;
+      }
+    });
+  }
+}
+]);

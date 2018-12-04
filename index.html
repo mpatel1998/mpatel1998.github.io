@@ -1,0 +1,24 @@
+<head>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+  <script
+              src="https://code.jquery.com/jquery-3.3.1.min.js"
+              integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+              crossorigin="anonymous"></script>
+              <script src="script.js"></script>
+
+  </head>
+<body ng-app="Contest" ng-controller="ContestController" style="display:none">
+  <div class="row">
+    <h1> Serena vs Tanisa </h1>
+    <h3> A contest hosted by Mohit Patel </h3>
+    </div>
+  <div class="row">
+    <div class="column">
+      <button ng-click="serena()"id="serena" class="transition-button"> <span class="oldtext"> Serena</span><span class="newtext" ng-model="sere"> {{sere}}</span> </button>
+      </div>
+      <div class="column">
+        <button ng-click="tanisa()" id="tanisa" class="transition-button"> <span class="oldtext"> Tanisa</span><span class="newtext" ng-model="tan"> {{tan}}</span> </button>
+        </div>
+
+  </body>
