@@ -3,12 +3,12 @@ app.controller('ContestController',['$scope',function($scope){
   $scope.sere;
   $scope.tan;
   var root="http://mpatel98.gearhostpreview.com/";
-  console.log("hey");
   $.ajax({
     type:'POST',
     url:root+'db.php',
     data:{'name':'serena'},
     success:function(data){
+      console.log(data);
       $scope.sere=data;
     }
   });
@@ -17,6 +17,7 @@ app.controller('ContestController',['$scope',function($scope){
     url:root+'db.php',
     data:{'name':'tanisa'},
     success:function(data){
+      console.log(data);
       $scope.tan=data;
     }
   });
