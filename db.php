@@ -6,6 +6,6 @@ if ($conn->connect_error) {
 }
 $sql="select serena from cont";
 $result=$conn->query($sql);
-echo json_encode($result);
+echo json_encode($result->num_rows);
 $conn->close();
  ?>
