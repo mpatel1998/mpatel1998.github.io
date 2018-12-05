@@ -2,6 +2,7 @@ var app=angular.module("Contest",[]);
 app.controller('ContestController',['$scope',function($scope){
   $scope.sere;
   $scope.tan;
+  $scope.trial=false;
   var root="http://mpatel98.gearhostpreview.com/";
   $.ajax({
     type:'POST',
@@ -21,6 +22,9 @@ app.controller('ContestController',['$scope',function($scope){
       $scope.tan=result[0]['tanisa'];
     }
   });
+  $scope.switch=function(){
+    $scope.trial=true;
+  }
   $scope.serena=function(){
     $.ajax({
       type:'POST',

@@ -26,6 +26,11 @@ span{
      height:340px;
      width:340px;
  }
+ #enter{
+   background-color:#ff7f50;
+   height:auto;
+   width:auto;
+ }
  .transition-button:hover {
        text-decoration:none;
        color:white;

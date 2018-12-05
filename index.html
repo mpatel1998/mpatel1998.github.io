@@ -13,7 +13,10 @@
     <h1> Serena vs Tanisa </h1>
     <h3> A contest hosted by Mohit Patel </h3>
     </div>
-  <div class="row" style="padding-top:35px">
+    <div ng-if="!trial" class="row">
+      <button ng-click="switch()" class="transition-button" id="enter"> Click Here to Enter </button>
+      </div>
+  <div  ng-if="trial" class="row" style="padding-top:35px">
     <div class="column">
       <button ng-click="serena()"id="serena" class="transition-button"> <span class="oldtext"> Serena</span><span class="newtext" ng-model="sere"> {{sere}}</span> </button>
       </div>
