@@ -10,7 +10,6 @@ app.controller('ContestController',['$scope',function($scope){
     success:function(data){
       var result=JSON.parse(data)
       $scope.sere=result[0]['serena'];
-      console.log($scope.sere);
     }
   });
   $.ajax({
@@ -26,7 +25,7 @@ app.controller('ContestController',['$scope',function($scope){
     $.ajax({
       type:'POST',
       url:root+'otherdb.php',
-      data:{'name':'serena','count':$scope.sere+1},
+      data:{'name':'serena','count':parseInt($scope.sere)+1},
       success:function(data){
         $scope.sere++;
       }
@@ -36,14 +35,12 @@ app.controller('ContestController',['$scope',function($scope){
     $.ajax({
       type:'POST',
       url:root+'otherdb.php',
-      data:{'name':'tanisa','count':$scope.tan+1},
+      data:{'name':'tanisa','count':parseInt($scope.tan)+1},
       success:(response)=>{
         $scope.tan++;
       }
     });
   }
-  document.getElementById('serena').click();
-  document.getElementById('tanisa').click();
 }
 
 ]);
