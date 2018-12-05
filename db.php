@@ -1,11 +1,11 @@
 <?php
-$conn=mysqli_connect("mysql1.gear.host","contest","Lo4kK51_-Y91","contest");
-if (mysqli_connect_errno()) {
+$conn=new mysqli("mysql1.gear.host","contest","Lo4kK51_-Y91","contest");
+if ($conn->connect_error) {
 
-  printf('connect failed');
+     die("Connection to database failed: " . $conn->connect_error);
 }
-$sql="select {$_POST['name']} from contest.cont";
-$result=mysqli_query($conn,$sql);
+$sql="select serena from cont;";
+$result=$conn->query($sql);
 echo json_encode($result);
 $conn->close();
  ?>
