@@ -7,7 +7,7 @@ if ($conn->connect_error) {
 $res=arrray();
 $sql="select serena from cont";
 $result=$conn->query($sql);
-while($row=$result->fetchassoc()){
+while($row=$result->fetch_assoc()){
   array_push($res,$row);
 }
 echo json_encode($res);
