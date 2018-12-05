@@ -9,9 +9,8 @@ app.controller('ContestController',['$scope',function($scope){
     data:{'name':'serena'},
     success:function(data){
       var result=JSON.parse(data)
-      console.log(result);
-      console.log(result[0]['serena']);
       $scope.sere=result[0]['serena'];
+      console.log($scope.sere);
     }
   });
   $.ajax({
