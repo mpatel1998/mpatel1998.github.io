@@ -6,6 +6,6 @@ if ($conn->connect_error) {
 }
 $sql="select {$_POST['name']} from cont";
 $result=$conn->query($sql);
-echo json_encode($sql);
+echo json_encode($result);
 $conn->close();
  ?>
