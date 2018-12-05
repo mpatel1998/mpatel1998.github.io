@@ -21,6 +21,7 @@ app.controller('ContestController',['$scope',function($scope){
       $scope.tan=result[0]['tanisa'];
     }
   });
+  $scope.$apply();
   $scope.serena=function(){
     $.ajax({
       type:'POST',
