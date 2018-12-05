@@ -18,7 +18,8 @@ app.controller('ContestController',['$scope',function($scope){
     url:root+'db.php',
     data:{'name':'tanisa'},
     success:function(data){
-      $scope.tan=data[0]['tanisa'];
+      var result=JSON.parse(data)
+      $scope.tan=result[0]['tanisa'];
     }
   });
   $scope.serena=function(){
@@ -27,6 +28,7 @@ app.controller('ContestController',['$scope',function($scope){
       url:root+'otherdb.php',
       data:{'name':'serena','count':$scope.sere},
       success:function(data){
+        console.log(data);
         $scope.sere++;
       }
     });
