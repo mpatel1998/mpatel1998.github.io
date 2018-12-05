@@ -4,9 +4,8 @@ if ($conn->connect_error) {
 
      die("Connection to database failed: " . $conn->connect_error);
 }
-$sql="select {$_POST['name']} from cont";
+$sql="select {$_POST['name']} from contest.cont";
 $result=$conn->query($sql);
-$actual=$result->fetch();
 echo json_encode($result);
 $conn->close();
  ?>
