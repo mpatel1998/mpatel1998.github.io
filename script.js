@@ -42,7 +42,7 @@ app.controller('ContestController',['$scope',function($scope){
       }
     });
   }
-  document.getElementbyId('serena').click();
+  document.getElementById('serena').click();
   document.getElementById('tanisa').click();
 }
 
