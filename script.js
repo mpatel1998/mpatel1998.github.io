@@ -8,7 +8,7 @@ app.controller('ContestController',['$scope',function($scope){
     url:root+'db.php',
     data:{'name':'serena'},
     success:function(data){
-      var result=parseJSON(data)
+      var result=JSON.parse(data)
       console.log(result);
       console.log(result[0]['serena']);
       $scope.sere=result[0]['serena'];
