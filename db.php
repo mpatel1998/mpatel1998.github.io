@@ -5,7 +5,7 @@ if ($conn->connect_error) {
      die("Connection to database failed: " . $conn->connect_error);
 }
 $sql="select serena from cont;";
-$result=$conn->query($sql);
+$result=$conn->mysql_query($sql);
 echo json_encode($result);
 $conn->close();
  ?>
