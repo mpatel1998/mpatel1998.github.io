@@ -42,8 +42,8 @@ app.controller('ContestController',['$scope',function($scope){
       }
     });
   }
-
+  document.getElementbyId('serena').click();
+  document.getElementById('tanisa').click();
 }
-document.getElementbyId('serena').click();
-document.getElementById('tanisa').click();
+
 ]);
