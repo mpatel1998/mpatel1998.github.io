@@ -32,6 +32,7 @@ app.controller('ContestController',['$scope',function($scope){
       data:{'name':'serena','count':parseInt($scope.sere)+1},
       success:function(data){
         $scope.sere++;
+        document.getElementById('confirm').style.display="block";
         $scope.$apply();
       }
     });
@@ -43,9 +44,15 @@ app.controller('ContestController',['$scope',function($scope){
       data:{'name':'tanisa','count':parseInt($scope.tan)+1},
       success:(response)=>{
         $scope.tan++;
+        document.getElementById('confirm').style.display="block";
         $scope.$apply();
       }
     });
+  }
+  window.onclick=function(event){
+    if(event.target==document.getElementById('confirm')){
+      document.getElementById('confirm').style.display="none";
+    }
   }
 }
 

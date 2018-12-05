@@ -31,6 +31,11 @@ span{
    height:auto;
    width:auto;
  }
+ .modal{
+   display:none;
+   z-index: 1;
+   padding-top:100px;
+ }
  .transition-button:hover {
        text-decoration:none;
        color:white;
