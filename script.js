@@ -8,9 +8,10 @@ app.controller('ContestController',['$scope',function($scope){
     url:root+'db.php',
     data:{'name':'serena'},
     success:function(data){
-      console.log(data);
-      console.log(data[0]['serena']);
-      $scope.sere=data[0]['serena'];
+      var result=parseJSON(data)
+      console.log(result);
+      console.log(result[0]['serena']);
+      $scope.sere=result[0]['serena'];
     }
   });
   $.ajax({
