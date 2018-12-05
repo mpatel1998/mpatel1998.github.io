@@ -2,7 +2,7 @@ var app=angular.module("Contest",[]);
 app.controller('ContestController',['$scope',function($scope){
   $scope.sere;
   $scope.tan;
-  var root="https://mpatel1998.github.io/";
+  var root="http://mpatel98.gearhostpreview.com/";
   console.log("hey");
   $.ajax({
     type:'POST',
@@ -41,5 +41,5 @@ app.controller('ContestController',['$scope',function($scope){
     });
   }
 
-} 
+}
 ]);
