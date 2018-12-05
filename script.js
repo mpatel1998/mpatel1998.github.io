@@ -9,8 +9,8 @@ app.controller('ContestController',['$scope',function($scope){
     data:{'name':'serena'},
     success:function(data){
       console.log(data);
-      console.log(data['serena']);
-      $scope.sere=data['serena'];
+      console.log(data[0]['serena']);
+      $scope.sere=data[0]['serena'];
     }
   });
   $.ajax({
@@ -18,7 +18,7 @@ app.controller('ContestController',['$scope',function($scope){
     url:root+'db.php',
     data:{'name':'tanisa'},
     success:function(data){
-      $scope.tan=data['tanisa'];
+      $scope.tan=data[0]['tanisa'];
     }
   });
   $scope.serena=function(){
