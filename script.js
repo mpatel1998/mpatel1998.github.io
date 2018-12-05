@@ -9,7 +9,7 @@ app.controller('ContestController',['$scope',function($scope){
     url:root+'db.php',
     data:{'name':'serena'},
     success:function(data){
-      scope.sere=data;
+      $scope.sere=data;
     }
   });
   $.ajax({
@@ -17,7 +17,7 @@ app.controller('ContestController',['$scope',function($scope){
     url:root+'db.php',
     data:{'name':'tanisa'},
     success:function(data){
-      scope.tan=data;
+      $scope.tan=data;
     }
   });
   $scope.serena=function(){
@@ -26,7 +26,7 @@ app.controller('ContestController',['$scope',function($scope){
       url:root+'otherdb.php',
       data:{'name':'serena','count':$scope.sere},
       success:function(data){
-        scope.sere++;
+        $scope.sere++;
       }
     });
   }
