@@ -4,7 +4,7 @@ if ($conn->connect_error) {
 
      die("Connection to database failed: " . $conn->connect_error);
 }
-$res=arrray();
+$res=array();
 $sql="select serena from cont";
 $result=$conn->query($sql);
 while($row=$result->fetch_assoc()){
