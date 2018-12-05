@@ -4,8 +4,12 @@ if ($conn->connect_error) {
 
      die("Connection to database failed: " . $conn->connect_error);
 }
+$res=arrray();
 $sql="select serena from cont";
 $result=$conn->query($sql);
-echo json_encode($result->num_rows);
+while($row=$result->feftchassoc()){
+  array_push($res,$row);
+}
+echo json_encode($res);
 $conn->close();
  ?>
