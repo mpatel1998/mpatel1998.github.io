@@ -5,7 +5,7 @@ if ($conn->connect_error) {
      die("Connection to database failed: " . $conn->connect_error);
 }
 $res=array();
-$sql="select serena from cont";
+$sql="select {$_POST['name']} from cont";
 $result=$conn->query($sql);
 while($row=$result->fetch_assoc()){
   array_push($res,$row);
