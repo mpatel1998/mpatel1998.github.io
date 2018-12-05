@@ -8,6 +8,8 @@ app.controller('ContestController',['$scope',function($scope){
     url:root+'db.php',
     data:{'name':'serena'},
     success:function(data){
+      console.log(data);
+      console.log(data['serena']);
       $scope.sere=data['serena'];
     }
   });
