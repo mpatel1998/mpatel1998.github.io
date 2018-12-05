@@ -2,44 +2,44 @@ var app=angular.module("Contest",[]);
 app.controller('ContestController',['$scope',function($scope){
   $scope.sere;
   $scope.tan;
+  var root="https://mpatel1998.github.io/";
   console.log("hey");
   $.ajax({
-    url:'serena.txt',
-    async:false,
-    success:function(response){
-      console.log('hey');
-      $scope.sere=response;
+    type:'POST',
+    url:root+'db.php',
+    data:{'name':'serena'},
+    success:function(data){
+      scope.sere=data;
     }
   });
-  console.log("Test");
   $.ajax({
-    url:"tanisa.txt",
-    datatype:'text',
+    type:'POST',
+    url:root+'db.php',
+    data:{'name':'tanisa'},
     success:function(data){
-      console.log(data);
-      $scope.tan=data;
-    },
-    error:function(){alert("error");}
+      scope.tan=data;
+    }
   });
   $scope.serena=function(){
     $.ajax({
       type:'POST',
-      url:'serena.txt',
-      data:$scope.sere+1,
-      success:(response)=>{
-        $scope.sere++;
+      url:root+'otherdb.php',
+      data:{'name':'serena','count':$scope.sere},
+      success:function(data){
+        scope.sere++;
       }
     });
   }
   $scope.tanisa=function(){
     $.ajax({
       type:'POST',
-      url:'tanisa.txt',
-      data:$scope.tan+1,
+      url:root+'otherdb.php',
+      data:{'name':'tanisa','count':$scope.tan},
       success:(response)=>{
         $scope.tan++;
       }
     });
   }
-}
+
+} 
 ]);
