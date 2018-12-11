@@ -25,6 +25,7 @@ span{
      text-decoration:none;
      height:340px;
      width:340px;
+     position: relative;
  }
  #enter{
    background-color:#ff7f50;
@@ -72,7 +73,7 @@ span{
        }
  #serena{
    background-size: cover;
-   background-image: url("ser.jpg");
+   background-image: url("ser1.jpg");
    float:right;
    margin-right:50px;
  }
@@ -80,5 +81,17 @@ span{
    float:left;
    margin-left:50px;
    background-size: cover;
-background-image: url("tan.jpg");
+background-image: url("tan1.jpg");
+}
+.prev, .next{
+  margin-left:20px;
+  margin-right:20px;
+}
+#clicker{
+  position: absolute;
+  bottom: 5%;
+  left:0%;
+  font-size: 24px;
+  cursor: pointer;
+
 }

@@ -3,6 +3,11 @@ app.controller('ContestController',['$scope',function($scope){
   $scope.sere;
   $scope.tan;
   $scope.trial=false;
+  $scope.serslide=[1,2,3,4,5];
+  var sercurr=1;
+  var tancurr=1;
+  $scope.tanslide=[1,2,3,4,5];
+
   var root="http://mpatel98.gearhostpreview.com/";
   $.ajax({
     type:'POST',
@@ -54,6 +59,31 @@ app.controller('ContestController',['$scope',function($scope){
       document.getElementById('confirm').style.display="none";
     }
   }
+  $scope.forward=function($event){
+    if($event.target.id.includes('ser')){
+      if($scope.serslide.length!=sercurr){
+        sercurr++;
+        $event.target.parentNode.parentNode.style.backgroundImage="url('ser"+sercurr+".jpg')";
+      }
+    } else{
+      if($scope.serslide.length!=tancurr){
+        tancurr++;
+        $event.target.parentNode.parentNode.style.backgroundImage="url('tan"+tancurr+".jpg')";
+    }
+  }
 }
-
+$scope.backward=function($event){
+  if($event.target.id.includes('ser')){
+    if($scope.serslide.length!=sercurr){
+      sercurr--;
+      $event.target.parentNode.parentNode.style.backgroundImage="url('ser"+sercurr+".jpg')";
+    }
+  } else{
+    if($scope.serslide.length!=tancurr){
+      tancurr--;
+      $event.target.parentNode.parentNode.style.backgroundImage="url('tan"+tancurr+".jpg')";
+  }
+}
+}
+}
 ]);
