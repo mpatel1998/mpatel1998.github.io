@@ -7,8 +7,15 @@ app.controller('ContestController',['$scope',function($scope){
   var sercurr=1;
   var tancurr=1;
   $scope.tanslide=[1,2,3,4,5];
-
   var root="http://mpatel98.gearhostpreview.com/";
+$scope.ip;
+  $.ajax({
+    type:'GET',
+    url:'http://gd.geobytes.com/GetCityDetails',
+    success:function(result){
+      $scope.ip=JSON.parse(result)['geobytesipaddress'];
+    }
+  });
   $.ajax({
     type:'POST',
     url:root+'db.php',
@@ -33,24 +40,47 @@ app.controller('ContestController',['$scope',function($scope){
   $scope.serena=function(){
     $.ajax({
       type:'POST',
-      url:root+'otherdb.php',
-      data:{'name':'serena','count':parseInt($scope.sere)+1},
+      url:root+'ipcheck.php',
+      data:{'ip':$scope.ip},
       success:function(data){
-        $scope.sere++;
-        document.getElementById('confirm').style.display="block";
-        $scope.$apply();
+        if(data){
+          alert("You have already voted!");
+        }else{
+          $.ajax({
+            type:'POST',
+            url:root+'otherdb.php',
+            data:{'name':'serena','count':parseInt($scope.sere)+1},
+            success:function(data){
+              $scope.sere++;
+              document.getElementById('confirm').style.display="block";
+              $scope.$apply();
+            }
+          });
+        }
       }
     });
+
   }
   $scope.tanisa=function(){
     $.ajax({
       type:'POST',
-      url:root+'otherdb.php',
-      data:{'name':'tanisa','count':parseInt($scope.tan)+1},
-      success:(response)=>{
-        $scope.tan++;
-        document.getElementById('confirm').style.display="block";
-        $scope.$apply();
+      url:root+'ipcheck.php',
+      data:{'ip':$scope.ip},
+      success:function(data){
+        if (data){
+          alert("You have already voted!");
+        } else{
+          $.ajax({
+            type:'POST',
+            url:root+'otherdb.php',
+            data:{'name':'tanisa','count':parseInt($scope.tan)+1},
+            success:(response)=>{
+              $scope.tan++;
+              document.getElementById('confirm').style.display="block";
+              $scope.$apply();
+            }
+          });
+        }
       }
     });
   }
