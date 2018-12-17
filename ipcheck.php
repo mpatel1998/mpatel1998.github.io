@@ -12,7 +12,7 @@ while($row=$result->fetch_assoc()){
   $condition=false;
 }
 if($condition){
-  $sql="insert into cont(ip) values ({$_POST['ip']})";
+  $sql="insert into ip(ip) values ({$_POST['ip']})";
   $result=$conn->query($sql);
 }
 echo json_encode($condition);

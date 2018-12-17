@@ -1,5 +1,18 @@
 var app=angular.module("Contest",[]);
 app.controller('ContestController',['$scope',function($scope){
+  var test=function(x){
+    number=1;
+    this.number=x;
+  }
+  test.prototype.new=function(){
+    return this.number;
+  };
+  test.number=2;
+  console.log(test);
+  var jeff=new test(3);
+  var dawg=new test(4);
+  console.log(dawg.new());
+  console.log(jeff.new());
   $scope.sere;
   $scope.tan;
   $scope.trial=false;
