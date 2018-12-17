@@ -104,12 +104,12 @@ $scope.ip;
 }
 $scope.backward=function($event){
   if($event.target.id.includes('ser')){
-    if($scope.serslide.length!=sercurr){
+    if($scope.serslide.length>0){
       sercurr--;
       $event.target.parentNode.parentNode.style.backgroundImage="url('ser"+sercurr+".jpg')";
     }
   } else{
-    if($scope.serslide.length!=tancurr){
+    if($scope.serslide.length>0){
       tancurr--;
       $event.target.parentNode.parentNode.style.backgroundImage="url('tan"+tancurr+".jpg')";
   }
