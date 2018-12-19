@@ -11,11 +11,7 @@ while($row=$result->fetch_assoc()){
   array_push($res,$row);
   $condition=0;
 }
-if($condition==0){
-  $sql="insert into ip(ip) values ({$_POST['ip']})";
-  $result=$conn->query($sql);
-  array_push($res,0);
-}
+
 echo json_encode($res);
 $conn->close();
  ?>
