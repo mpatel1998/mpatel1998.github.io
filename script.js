@@ -10,6 +10,7 @@ app.controller('ContestController',['$scope',function($scope){
     var date=new Date();
     date.setTime(date.getTime()+(100*24*60*60*1000));
     document.cookie="uid="+uid+";expires="+date.toGMTString()+";path=/";
+    $scope.uid=uid;
     return uid;
 }
 function getCookie(cookie){
@@ -43,6 +44,7 @@ $scope.chosen;
         url:root+'ipcheck.php',
         data:{'ip':$scope.uid},
         success:function(data){
+          console.log(data);
           data=JSON.parse(data);
           if(data.length>0){
           if(data[0]['chosen']===null|| typeof data[0]['chosen']==='undefined'){
