@@ -4,7 +4,29 @@ app.controller('ContestController',['$scope',function($scope){
   $scope.tan;
   $scope.trial=false;
   $scope.serslide=[1,2,3,4,5];
-  $scope.ip;
+  $scope.uid;
+  function setCookie(){
+    console.log('hey');
+    var uid=Math.random();
+    var date=new Date();
+    date.setTime(date.getTime()+(100*24*60*60*1000));
+    document.cookie="uid="+uid+";expires="+date.toGMTString()+";path=/";
+    return uid;
+}
+function getCookie(cookie){
+  return cookie.split(';')[0].split('=')[1];
+}
+function checkCookie(){
+  var cookie=decodeURIComponent(document.cookie);
+  if(cookie=""){
+    $scope.uid=setCookie();
+  } else{
+    $scope.uid=getCookie(cookie);
+  }
+}
+checkCookie();
+console.log(decodeURIComponent(document.cookie));
+console.log($scope.uid);
   var sercurr=1;
   var tancurr=1;
   $scope.tanslide=[1,2,3,4,5];
@@ -17,11 +39,10 @@ $scope.chosen;
       $.ajax({
         type:'POST',
         url:root+'ipcheck.php',
-        data:{'ip':result['ip']},
+        data:{'ip':$scope.uid},
         success:function(data){
           data=JSON.parse(data);
           console.log(data);
-          $scope.ip=result['ip'];
           if(data[0]['chosen']===null|| typeof data[0]['chosen']==='undefined'){
             $scope.chosen="none";
             console.log('hey');
@@ -74,7 +95,7 @@ $scope.chosen;
         $.ajax({
           type:'POST',
           url:root+'moredb.php',
-          data:{'name':'serena',ip:$scope.ip},
+          data:{'name':'serena','ip':$scope.uid},
           success:function(result){
             if($scope.chosen=='tanisa'){
               $.ajax({
@@ -107,7 +128,7 @@ $scope.chosen;
         $.ajax({
           type:'POST',
           url:root+'moredb.php',
-          data:{'name':'tanisa',ip:$scope.ip},
+          data:{'name':'tanisa','ip':$scope.uid},
           success:function(result){
             if($scope.chosen=='serena'){
               $.ajax({
