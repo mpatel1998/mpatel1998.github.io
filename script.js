@@ -15,7 +15,6 @@ app.controller('ContestController',['$scope',function($scope){
 function getCookie(cookie){
   cookie.split(';').forEach(function(element){
     if(element.includes('uid')){
-      console.log(element.split('='))
       $scope.uid= element.split('=')[1];
     }
   });
@@ -30,7 +29,6 @@ function checkCookie(){
   }
 }
 checkCookie();
-console.log($scope.uid);
   var sercurr=1;
   var tancurr=1;
   $scope.tanslide=[1,2,3,4,5];
@@ -46,7 +44,6 @@ $scope.chosen;
         data:{'ip':$scope.uid},
         success:function(data){
           data=JSON.parse(data);
-          console.log(data);
           if(data.length>0){
           if(data[0]['chosen']===null|| typeof data[0]['chosen']==='undefined'){
             $scope.chosen="none";
@@ -94,7 +91,7 @@ $scope.chosen;
     $.ajax({
       type:'POST',
       url:root+'otherdb.php',
-      data:{'name':'serena','count':parseInt($scope.sere)+1},
+      data:{'name':'serena','count':1},
       success:function(data){
         $scope.sere++;
         $.ajax({
@@ -106,7 +103,7 @@ $scope.chosen;
               $.ajax({
                 type:'POST',
                 url:root+'otherdb.php',
-                data:{'name':'tanisa','count':parseInt($scope.tan)-1},
+                data:{'name':'tanisa','count':0,
                 success:function(){
                   $scope.tan--;
                   $scope.$apply();
@@ -127,7 +124,7 @@ $scope.chosen;
     $.ajax({
       type:'POST',
       url:root+'otherdb.php',
-      data:{'name':'tanisa','count':parseInt($scope.tan)+1},
+      data:{'name':'tanisa','count':1},
       success:function(data){
         $scope.tan++;
         $.ajax({
@@ -139,7 +136,7 @@ $scope.chosen;
               $.ajax({
                 type:'POST',
                 url:root+'otherdb.php',
-                data:{'name':'serena','count':parseInt($scope.sere)-1},
+                data:{'name':'serena','count':0},
                 success:function(){
                   $scope.sere--;
                   $scope.$apply();
