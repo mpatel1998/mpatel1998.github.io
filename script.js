@@ -19,7 +19,7 @@ $scope.chosen;
         url:root+'ipcheck.php',
         data:{'ip':result['ip']},
         success:function(data){
-          console.log(result);
+          console.log(data);
           $scope.ip=result['ip'];
           if(data['chosen']===null|| typeof data['chosen']==='undefined'){
             $scope.chosen="none";
