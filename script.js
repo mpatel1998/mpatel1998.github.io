@@ -14,14 +14,19 @@ app.controller('ContestController',['$scope',function($scope){
     return uid;
 }
 function getCookie(cookie){
-  return cookie.split(';')[0].split('=')[1];
+  return cookie.split(';').forEach(function(element){
+    if(element.includes('uid')){
+      return element.split('=')[1];
+    }
+  });
 }
 function checkCookie(){
   var cookie=decodeURIComponent(document.cookie);
-  if(cookie=""){
-    $scope.uid=setCookie();
+  console.log(cookie);
+  if(cookie.includes('uid')){
+    $scope.uid=getCookie();
   } else{
-    $scope.uid=getCookie(cookie);
+    $scope.uid=setCookie(cookie);
   }
 }
 checkCookie();
