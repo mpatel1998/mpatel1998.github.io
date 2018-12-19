@@ -4,6 +4,8 @@ if ($conn->connect_error) {
      die("Connection to database failed: " . $conn->connect_error);
 }
 $res=array();
-$sql="update ip set chosen='{$_POST['name']}' where ip='{$_POST['ip']}'"
+$sql="UPDATE ip SET chosen='{$_POST['name']}' where ip='{$_POST['ip']}'"
 $result=$conn->query($sql);
+echo json_encode($sql);
+$conn->close();
  ?>

@@ -73,6 +73,7 @@ $scope.chosen;
           url:root+'moredb.php',
           data:{'name':'serena',ip:$scope.ip},
           success:function(result){
+            console.log(result);
             if($scope.chosen=='tanisa'){
               $.ajax({
                 type:'POST',
