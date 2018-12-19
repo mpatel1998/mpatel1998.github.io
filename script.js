@@ -44,7 +44,6 @@ $scope.chosen;
         url:root+'ipcheck.php',
         data:{'ip':$scope.uid},
         success:function(data){
-          console.log(data);
           data=JSON.parse(data);
           if(data.length>0){
           if(data[0]['chosen']===null|| typeof data[0]['chosen']==='undefined'){
@@ -52,6 +51,8 @@ $scope.chosen;
           } else{
             $scope.chosen=data[0]['chosen'];
           }
+        } else{
+          $scope.chosen="none";
         }
 
         }
