@@ -15,22 +15,21 @@ app.controller('ContestController',['$scope',function($scope){
 function getCookie(cookie){
   cookie.split(';').forEach(function(element){
     if(element.includes('uid')){
-      console.log(element.split('='));
-      return element.split('=')[1];
+      console.log(element.split('='))
+      $scope.uid= element.split('=')[1];
     }
   });
-  return "";
+  return;
 }
 function checkCookie(){
   var cookie=decodeURIComponent(document.cookie);
   if(cookie.includes('uid')){
-    $scope.uid=getCookie(cookie);
+    getCookie(cookie);
   } else{
-    $scope.uid=setCookie();
+      setCookie();
   }
 }
 checkCookie();
-console.log(document.cookie);
 console.log($scope.uid);
   var sercurr=1;
   var tancurr=1;
