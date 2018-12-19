@@ -14,6 +14,9 @@ span{
   width:100%;
   text-align: center;
 }
+.transition :focus{
+  outline:none;
+}
   .transition-button {
      border: none;
      background: #404040;
@@ -97,5 +100,7 @@ background-image: url("tan1.jpg");
 
 }
 .chosen{
-  border: thick solid #ff7f50;
+  border-color: #ff7f50;
+  border-style:inset;
+  border-width: 10px;
 }

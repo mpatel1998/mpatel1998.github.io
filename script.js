@@ -53,7 +53,6 @@ $scope.chosen;
   });
   $scope.switch=function(){
     if(typeof $scope.chosen==='undefined'|| $scope.chosen===null){
-      console.log($scope.ip);
       alert("Sorry looks like we couldn't quite figure out who you are. Have you tried turning of your adblocker?")
     }else{
       $scope.trial=true;
@@ -74,7 +73,6 @@ $scope.chosen;
           url:root+'moredb.php',
           data:{'name':'serena',ip:$scope.ip},
           success:function(result){
-            console.log(result);
             if($scope.chosen=='tanisa'){
               $.ajax({
                 type:'POST',
@@ -102,7 +100,6 @@ $scope.chosen;
       url:root+'otherdb.php',
       data:{'name':'tanisa','count':parseInt($scope.tan)+1},
       success:function(data){
-        console.log($scope.ip);
         $scope.tan++;
         $.ajax({
           type:'POST',
