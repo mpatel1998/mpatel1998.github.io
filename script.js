@@ -35,10 +35,6 @@ checkCookie();
   $scope.tanslide=[1,2,3,4,5];
   var root="http://mpatel98.gearhostpreview.com/";
 $scope.chosen;
-  $.ajax({
-    type:'GET',
-    url:'https://api.ipify.org?format=json',
-    success:function(result){
       $.ajax({
         type:'POST',
         url:root+'ipcheck.php',
@@ -57,11 +53,6 @@ $scope.chosen;
 
         }
       });
-    },
-    error: function(){
-      alert("Please turn adblock off for this website and try again.");
-    }
-  });
   $.ajax({
     type:'POST',
     url:root+'db.php',
@@ -82,7 +73,7 @@ $scope.chosen;
   });
   $scope.switch=function(){
     if(typeof $scope.chosen==='undefined'|| $scope.chosen===null){
-      alert("Sorry looks like we couldn't quite figure out who you are. Have you tried turning of your adblocker?")
+      alert("Sorry looks like we couldn't quite figure out who you are. Have you tried turning off your adblocker/enabling cookies and reloading the page?")
     }else{
       $scope.trial=true;
   }
