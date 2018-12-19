@@ -19,8 +19,6 @@ $scope.chosen;
         url:root+'ipcheck.php',
         data:{'ip':result['ip']},
         success:function(data){
-          console.log(data);
-          console.log(result);
           $scope.ip=result['ip'];
           if(result['chosen']===null|| typeof result['chosen']==='undefined'){
             $scope.chosen="none";
@@ -54,7 +52,6 @@ $scope.chosen;
     }
   });
   $scope.switch=function(){
-    console.log($scope.chosen);
     if(typeof $scope.chosen==='undefined'|| $scope.chosen===null){
       alert("Sorry looks like we couldn't quite figure out who you are. Have you tried turning of your adblocker?")
     }else{
