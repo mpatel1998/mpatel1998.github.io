@@ -21,11 +21,11 @@ $scope.chosen;
         success:function(data){
           console.log(result);
           $scope.ip=result['ip'];
-          if(result['chosen']===null|| typeof result['chosen']==='undefined'){
+          if(data['chosen']===null|| typeof data['chosen']==='undefined'){
             $scope.chosen="none";
             console.log('hey');
           } else{
-            $scope.chosen=result['chosen'];
+            $scope.chosen=data['chosen'];
           }
 
         }
