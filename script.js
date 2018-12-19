@@ -103,7 +103,7 @@ $scope.chosen;
               $.ajax({
                 type:'POST',
                 url:root+'otherdb.php',
-                data:{'name':'tanisa','count':0}
+                data:{'name':'tanisa','count':0},
                 success:function(){
                   $scope.tan--;
                   $scope.$apply();
