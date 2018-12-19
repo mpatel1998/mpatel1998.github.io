@@ -11,9 +11,12 @@ app.controller('ContestController',['$scope',function($scope){
 $scope.ip;
   $.ajax({
     type:'GET',
-    url:'http://gd.geobytes.com/GetCityDetails',
+    url:'https://api.ipify.org?format=json',
     success:function(result){
-      $scope.ip=JSON.parse(result)['geobytesipaddress'];
+      $scope.ip=result['ip'];
+    },
+    error: function(){
+      alert("Please turn adblock off for this website and try again.");
     }
   });
   $.ajax({
@@ -35,7 +38,11 @@ $scope.ip;
     }
   });
   $scope.switch=function(){
+    if(typeof $scope.ip==='undefined'|| $scope.ip===null){
+      alert("Sorry looks like we couldn't quite figure out who you are. Have you tried turning of your adblocker?")
+    }else{
     $scope.trial=true;
+  }
   }
   $scope.serena=function(){
     $.ajax({
