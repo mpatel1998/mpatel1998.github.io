@@ -19,6 +19,8 @@ $scope.chosen="serena";
         url:root+'ipcheck.php',
         data:{'ip':result['ip']},
         success:function(data){
+          console.log(data);
+          console.log(result);
           $scope.ip=result['ip'];
           $scope.chosen=data['chosen'];
 
