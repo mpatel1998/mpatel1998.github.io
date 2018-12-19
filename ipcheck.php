@@ -9,7 +9,6 @@ $sql="select 1 from chosen where ip={$_POST['ip']}";
 $result=$conn->query($sql);
 while($row=$result->fetch_assoc()){
   array_push($res,$row);
-  $condition=0;
 }
 
 echo json_encode($res);
