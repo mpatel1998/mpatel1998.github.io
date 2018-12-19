@@ -13,13 +13,12 @@ app.controller('ContestController',['$scope',function($scope){
     return uid;
 }
 function getCookie(cookie){
-
-  return cookie.split(';').forEach(function(element){
-    console.log(element);
+  cookie.split(';').forEach(function(element){
     if(element.includes('uid')){
       return element.split('=')[1];
     }
   });
+  return "";
 }
 function checkCookie(){
   var cookie=decodeURIComponent(document.cookie);
