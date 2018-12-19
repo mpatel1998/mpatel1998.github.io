@@ -5,7 +5,7 @@ if ($conn->connect_error) {
 }
 $condition=1;
 $res=array();
-$sql="select * from ip where ip={$_POST['ip']}";
+$sql="select * from ip where ip='{$_POST['ip']}'";
 $result=$conn->query($sql);
 while($row=$result->fetch_assoc()){
   array_push($res,$row);
