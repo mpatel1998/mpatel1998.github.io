@@ -85,7 +85,6 @@ $scope.chosen="serena";
           }
         });
         }
-      }
     });
   }
   $scope.tanisa=function($event){
@@ -119,7 +118,6 @@ $scope.chosen="serena";
           }
         });
         }
-      }
     });
   }
   window.onclick=function(event){
