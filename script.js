@@ -19,13 +19,14 @@ $scope.chosen;
         url:root+'ipcheck.php',
         data:{'ip':result['ip']},
         success:function(data){
+          data=JSON.parse(data);
           console.log(data);
           $scope.ip=result['ip'];
-          if(data['chosen']===null|| typeof data['chosen']==='undefined'){
+          if(data[0]['chosen']===null|| typeof data[0]['chosen']==='undefined'){
             $scope.chosen="none";
             console.log('hey');
           } else{
-            $scope.chosen=data['chosen'];
+            $scope.chosen=data[0]['chosen'];
           }
 
         }
