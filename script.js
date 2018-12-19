@@ -16,7 +16,7 @@ $scope.chosen;
       $.ajax({
         type:'POST',
         url:root+'ipcheck.php',
-        data:{'ip':result['ip']},
+        data:{'ip':0},
         success:function(data){
           console.log(data);
           $scope.chosen=data;
