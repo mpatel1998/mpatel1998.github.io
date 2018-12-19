@@ -22,6 +22,8 @@ function getCookie(cookie){
 }
 function checkCookie(){
   var cookie=decodeURIComponent(document.cookie);
+  console.log(decodeURIComponent(document.cookie));
+  console.log(cookie);
   if(cookie.includes('uid')){
     $scope.uid=getCookie();
   } else{
