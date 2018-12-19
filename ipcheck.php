@@ -15,6 +15,6 @@ if($condition){
   $sql="insert into ip(ip) values ('{$_POST['ip']}')";
   $result=$conn->query($sql);
 }
-echo json_encode($sql);
+echo json_encode($res);
 $conn->close();
  ?>
