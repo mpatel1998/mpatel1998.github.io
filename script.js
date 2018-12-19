@@ -16,10 +16,10 @@ $scope.chosen;
       $.ajax({
         type:'POST',
         url:root+'ipcheck.php',
-        data:{'ip':0},
+        data:{'ip':1},
         success:function(data){
           console.log(data);
-          $scope.chosen=data;
+
         }
       });
     },
