@@ -9,7 +9,7 @@ app.controller('ContestController',['$scope',function($scope){
   var tancurr=1;
   $scope.tanslide=[1,2,3,4,5];
   var root="http://mpatel98.gearhostpreview.com/";
-$scope.chosen="serena";
+$scope.chosen;
   $.ajax({
     type:'GET',
     url:'https://api.ipify.org?format=json',
@@ -22,7 +22,11 @@ $scope.chosen="serena";
           console.log(data);
           console.log(result);
           $scope.ip=result['ip'];
-          $scope.chosen=data['chosen'];
+          if(result['chosen']===null|| typeof result['chosen']==='undefined'){
+            $scope.chosen="none";
+          } else{
+            $scope.chosen=result['chosen'];
+          }
 
         }
       });
@@ -50,6 +54,7 @@ $scope.chosen="serena";
     }
   });
   $scope.switch=function(){
+    console.log($scope.chosen);
     if(typeof $scope.chosen==='undefined'|| $scope.chosen===null){
       alert("Sorry looks like we couldn't quite figure out who you are. Have you tried turning of your adblocker?")
     }else{
