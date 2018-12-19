@@ -18,7 +18,7 @@
       </div>
   <div  ng-if="trial" class="row" style="padding-top:35px">
     <div class="column">
-      <button ng-click="serena()"id="serena" class="transition-button">
+      <button ng-class="{chosen:chosen=='serena'}"ng-click="serena($event)"id="serena" class="transition-button">
 
 <span class="oldtext"> Serena</span><span class="newtext" ng-model="sere"> {{sere}}</span>
 <div class="row" id="clicker">
@@ -27,7 +27,7 @@
 
       </div>
       <div class="column">
-        <button ng-click="tanisa()" id="tanisa" class="transition-button"> <span class="oldtext"> Tanisa</span><span class="newtext" ng-model="tan"> {{tan}}</span>
+        <button ng-class="{chosen:chosen=='tanisa'}"ng-click="tanisa($event)" id="tanisa" class="transition-button"> <span class="oldtext"> Tanisa</span><span class="newtext" ng-model="tan"> {{tan}}</span>
           <div class="row" id="clicker">
           <a id="tan-f"ng-click="backward($event)"class="prev">&#10094;</a>
           <a id="tan-b"ng-click="forward($event)"class="next">&#10095;</a> </div> </button>

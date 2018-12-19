@@ -4,11 +4,12 @@ app.controller('ContestController',['$scope',function($scope){
   $scope.tan;
   $scope.trial=false;
   $scope.serslide=[1,2,3,4,5];
+  $scope.ip;
   var sercurr=1;
   var tancurr=1;
   $scope.tanslide=[1,2,3,4,5];
   var root="http://mpatel98.gearhostpreview.com/";
-$scope.chosen;
+$scope.chosen="serena";
   $.ajax({
     type:'GET',
     url:'https://api.ipify.org?format=json',
@@ -16,9 +17,10 @@ $scope.chosen;
       $.ajax({
         type:'POST',
         url:root+'ipcheck.php',
-        data:{'ip':1},
+        data:{'ip':parseInt(result['ip'])},
         success:function(data){
-          console.log(data);
+          $scope.ip=parseInt(result['ip']);
+          $scope.chosen=data['chosen'];
 
         }
       });
@@ -49,52 +51,73 @@ $scope.chosen;
     if(typeof $scope.chosen==='undefined'|| $scope.chosen===null){
       alert("Sorry looks like we couldn't quite figure out who you are. Have you tried turning of your adblocker?")
     }else{
-    $scope.trial=true;
+      $scope.trial=true;
   }
-  }
-  $scope.serena=function(){
+}
+  $scope.serena=function($event){
+    if($event.target.id.includes('ser-')||$scope.chosen=='serena'){
+      return;
+    }
     $.ajax({
       type:'POST',
-      url:root+'ipcheck.php',
-      data:{'ip':$scope.ip},
+      url:root+'otherdb.php',
+      data:{'name':'serena','count':parseInt($scope.sere)+1},
       success:function(data){
-        if(data){
-          alert("You have already voted!");
-        }else{
-          $.ajax({
-            type:'POST',
-            url:root+'otherdb.php',
-            data:{'name':'serena','count':parseInt($scope.sere)+1},
-            success:function(data){
-              $scope.sere++;
-              document.getElementById('confirm').style.display="block";
-              $scope.$apply();
+        $scope.sere++;
+        $.ajax({
+          type:'POST',
+          url:root+'moredb.php',
+          data:{'name':'serena','chosen':$scope.chosen,'ip':$scope.ip},
+          success:function(result){
+            if($scope.chosen=='tanisa'){
+              $.ajax({
+                type:'POST',
+                url:root+'otherdb.php',
+                data:{'name':'tanisa','count':parseInt($scope.tan)-1},
+                success:function(){
+                  $scope.tan--;
+                  $scope.$apply();
+                }
+              });
             }
-          });
+            $scope.chosen='tanisa';
+            $scope.$apply();
+          }
+        });
         }
       }
     });
-
   }
-  $scope.tanisa=function(){
+  $scope.tanisa=function($event){
+    if($event.target.id.includes('tan-')||$scope.chosen=='tanisa'){
+      return;
+    }
     $.ajax({
       type:'POST',
-      url:root+'ipcheck.php',
-      data:{'ip':$scope.ip},
+      url:root+'otherdb.php',
+      data:{'name':'tanisa','count':parseInt($scope.tan)+1},
       success:function(data){
-        if (data){
-          alert("You have already voted!");
-        } else{
-          $.ajax({
-            type:'POST',
-            url:root+'otherdb.php',
-            data:{'name':'tanisa','count':parseInt($scope.tan)+1},
-            success:(response)=>{
-              $scope.tan++;
-              document.getElementById('confirm').style.display="block";
-              $scope.$apply();
+        $scope.tan++;
+        $.ajax({
+          type:'POST',
+          url:root+'moredb.php',
+          data:{'name':'tanisa','chosen':$scope.chosen,'ip':$scope.ip},
+          success:function(result){
+            if($scope.chosen=='serena'){
+              $.ajax({
+                type:'POST',
+                url:root+'otherdb.php',
+                data:{'name':'serena','count':parseInt($scope.sere)-1},
+                success:function(){
+                  $scope.sere--;
+                  $scope.$apply();
+                }
+              });
             }
-          });
+            $scope.chosen='tanisa';
+            $scope.$apply();
+          }
+        });
         }
       }
     });
@@ -119,12 +142,12 @@ $scope.chosen;
 }
 $scope.backward=function($event){
   if($event.target.id.includes('ser')){
-    if(sercurr>0){
+    if(sercurr>1){
       sercurr--;
       $event.target.parentNode.parentNode.style.backgroundImage="url('ser"+sercurr+".jpg')";
     }
   } else{
-    if(tancurr>0){
+    if(tancurr>1){
       tancurr--;
       $event.target.parentNode.parentNode.style.backgroundImage="url('tan"+tancurr+".jpg')";
   }
