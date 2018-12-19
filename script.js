@@ -6,7 +6,6 @@ app.controller('ContestController',['$scope',function($scope){
   $scope.serslide=[1,2,3,4,5];
   $scope.uid;
   function setCookie(){
-    console.log('hey');
     var uid=Math.random();
     var date=new Date();
     date.setTime(date.getTime()+(100*24*60*60*1000));
@@ -22,7 +21,6 @@ function getCookie(cookie){
 }
 function checkCookie(){
   var cookie=decodeURIComponent(document.cookie);
-  console.log(cookie);
   if(cookie.includes('uid')){
     $scope.uid=getCookie();
   } else{
@@ -30,8 +28,6 @@ function checkCookie(){
   }
 }
 checkCookie();
-console.log(decodeURIComponent(document.cookie));
-console.log($scope.uid);
   var sercurr=1;
   var tancurr=1;
   $scope.tanslide=[1,2,3,4,5];
@@ -48,12 +44,14 @@ $scope.chosen;
         success:function(data){
           data=JSON.parse(data);
           console.log(data);
+          if(data.length>0){
           if(data[0]['chosen']===null|| typeof data[0]['chosen']==='undefined'){
             $scope.chosen="none";
             console.log('hey');
           } else{
             $scope.chosen=data[0]['chosen'];
           }
+        }
 
         }
       });
