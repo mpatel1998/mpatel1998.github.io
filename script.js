@@ -15,6 +15,7 @@ app.controller('ContestController',['$scope',function($scope){
 function getCookie(cookie){
   cookie.split(';').forEach(function(element){
     if(element.includes('uid')){
+      console.log(element.split('='));
       return element.split('=')[1];
     }
   });
