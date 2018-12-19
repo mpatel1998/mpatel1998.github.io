@@ -8,12 +8,19 @@ app.controller('ContestController',['$scope',function($scope){
   var tancurr=1;
   $scope.tanslide=[1,2,3,4,5];
   var root="http://mpatel98.gearhostpreview.com/";
-$scope.ip;
+$scope.chosen;
   $.ajax({
     type:'GET',
     url:'https://api.ipify.org?format=json',
     success:function(result){
-      $scope.ip=result['ip'];
+      $.ajax({
+        type:'POST',
+        url:root+'ipcheck.php',
+        data:{'ip':result['ip']},
+        success:function(data){
+          $scope.chosen=data;
+        }
+      });
     },
     error: function(){
       alert("Please turn adblock off for this website and try again.");

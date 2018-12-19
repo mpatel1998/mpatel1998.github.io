@@ -5,16 +5,9 @@ if ($conn->connect_error) {
 }
 $condition=true;
 $res=array();
-$sql="select {$_POST['ip']} from ip";
+$sql="select 1 from ip where ip={$_POST['ip']}";
 $result=$conn->query($sql);
-while($row=$result->fetch_assoc()){
-  array_push($res,$row);
-  $condition=false;
-}
-if($condition){
-  $sql="insert into ip(ip) values ({$_POST['ip']})";
-  $result=$conn->query($sql);
-}
-echo json_encode($condition);
+
+echo json_encode($result);
 $conn->close();
  ?>
