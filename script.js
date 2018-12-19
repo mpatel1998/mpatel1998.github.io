@@ -17,9 +17,9 @@ $scope.chosen="serena";
       $.ajax({
         type:'POST',
         url:root+'ipcheck.php',
-        data:{'ip':parseInt(result['ip'])},
+        data:{'ip':result['ip']},
         success:function(data){
-          $scope.ip=parseInt(result['ip']);
+          $scope.ip=result['ip'];
           $scope.chosen=data['chosen'];
 
         }
@@ -67,7 +67,7 @@ $scope.chosen="serena";
         $.ajax({
           type:'POST',
           url:root+'moredb.php',
-          data:{'name':'serena','chosen':$scope.chosen,'ip':$scope.ip},
+          data:{'name':'serena',ip:$scope.ip},
           success:function(result){
             if($scope.chosen=='tanisa'){
               $.ajax({
@@ -80,7 +80,7 @@ $scope.chosen="serena";
                 }
               });
             }
-            $scope.chosen='tanisa';
+            $scope.chosen='serena';
             $scope.$apply();
           }
         });
@@ -100,7 +100,7 @@ $scope.chosen="serena";
         $.ajax({
           type:'POST',
           url:root+'moredb.php',
-          data:{'name':'tanisa','chosen':$scope.chosen,'ip':$scope.ip},
+          data:{'name':'tanisa',ip:$scope.ip},
           success:function(result){
             if($scope.chosen=='serena'){
               $.ajax({
