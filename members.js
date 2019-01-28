@@ -9,11 +9,11 @@ function checkLoginState() {
   }
 
 FB.login(function(response){
-  if(response.status==='connected'{
-
+  if(response.status==='connected'){
+console.log('Logged in');
   } else{
-    alert('Not logged in');
-  })
+    console.log('Not logged in');
+  }
 });
 
 
