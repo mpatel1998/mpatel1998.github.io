@@ -23,13 +23,13 @@ function checkLoginState() {
     });
   }
 
-FB.login(function(response){
+$scope.login=function(){FB.login(function(response){
   if(response.status==='connected'){
 console.log('Logged in');
   } else{
     console.log('Not logged in');
   }
-});
+});}
 
 
 }]);
