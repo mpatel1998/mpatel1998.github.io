@@ -56,7 +56,7 @@ $scope.chosen;
         } else{
           $scope.chosen="none";
         }
-        console.log(data[0]['username'];)
+        console.log(data[0]['username']);
         if(data[0]['username']===null || typeof data[0]['username']==='undefined'){
           
           console.log("No Username Registered");
