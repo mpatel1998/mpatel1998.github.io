@@ -6,9 +6,6 @@ if ($conn->connect_error) {
 $res=array();
 $sql="UPDATE ip SET username = {$_POST['username']} where uuid={$_POST['uuid']}";
 $result=$conn->query($sql);
-while($row=$result->fetch_assoc()){
-    array_push($res,$row);
-  }
-  echo json_encode($res);
-  $conn->close();
+echo json_encode($sql);
+ $conn->close();
 ?>
