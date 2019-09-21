@@ -16,7 +16,7 @@
     <h3> A contest hosted by Mohit Patel </h3>
     </div>
     <div class="row">
-      <input  ng-if="!username" type="text" id="username" placeholder="Input username here">
+      <input  ng-if="!username && !trial" type="text" id="username" placeholder="Input username here">
       <div ng-if="username"><p>Welcome {{username}}!</p>
         <button  ng-if="!trial" ng-click="usernameChange()" class="transition-button" id="username-change">Not You?</button>
         </div>
