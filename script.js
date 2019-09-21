@@ -5,6 +5,7 @@ app.controller('ContestController',['$scope',function($scope){
   $scope.trial=false;
   $scope.serslide=[1,2,3,4,5];
   $scope.uid;
+  $scope.username;
   function setCookie(){
     var uid=Math.random();
     var date=new Date();
@@ -14,9 +15,13 @@ app.controller('ContestController',['$scope',function($scope){
     return uid;
 }
 function getCookie(cookie){
+  console.log(cookie);
   cookie.split(';').forEach(function(element){
     if(element.includes('uid')){
       $scope.uid= element.split('=')[1];
+    }
+    if (element.includes('username')){
+      $scope.username=element.split('=')[2];
     }
   });
   return;
@@ -71,14 +76,39 @@ $scope.chosen;
       $scope.tan=result[0]['tanisa'];
     }
   });
+  
+  $scope.usernameChange=function(){
+    $.ajax({
+      type:'POST',
+      data:{'uid':$scope.uid},
+      url:root+'userdel.php',
+      success:function(data){
+        $scope.username="";
+      }
+    })
+  }
+
   $scope.switch=function(){
     if(typeof $scope.chosen==='undefined'|| $scope.chosen===null){
       alert("Sorry looks like we couldn't quite figure out who you are. Have you tried turning off your adblocker/enabling cookies and reloading the page?")
     }else{
+      if($scope.username==null && document.getElementById('username').value){
+        $scope.username=document.getElementById('username').value;
+        $.ajax({
+          type:'POST',
+          url:root+'username.php',
+          data:{'username':$scope.username},
+          success:function(data){
+            $scope.trial=true;
+          }
+        });
+      }else{
       $scope.trial=true;
+      }
   }
 }
-  $scope.serena=function($event){
+  
+$scope.serena=function($event){
     if($event.target.id.includes('ser-')||$scope.chosen=='serena'){
       return;
     }
