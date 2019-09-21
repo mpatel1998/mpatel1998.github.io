@@ -4,22 +4,22 @@ app.controller('ContestController',['$scope',function($scope){
   $scope.tan;
   $scope.trial=false;
   $scope.serslide=[1,2,3,4,5];
-  $scope.uid;
+  $scope.uuid;
   $scope.username;
   function setCookie(){
     console.log("Setting Cookie");
-    var uid=Math.random();
+    var uuid=Math.random();
     var date=new Date();
     date.setTime(date.getTime()+(100*24*60*60*1000));
-    document.cookie="uid="+uid+";expires="+date.toGMTString()+";path=/";
-    $scope.uid=uid;
-    return uid;
+    document.cookie="uuid="+uuid+";expires="+date.toGMTString()+";path=/";
+    $scope.uuid=uuid;
+    return uuid;
 }
 function getCookie(cookie){
   console.log(cookie);
   cookie.split(';').forEach(function(element){
-    if(element.includes('uid')){
-      $scope.uid= element.split('=')[1];
+    if(element.includes('uuid')){
+      $scope.uuid= element.split('=')[1];
     }
     if (element.includes('username')){
       $scope.username=element.split('=')[2];
@@ -29,7 +29,7 @@ function getCookie(cookie){
 }
 function checkCookie(){
   var cookie=decodeURIComponent(document.cookie);
-  if(cookie.includes('uid')){
+  if(cookie.includes('uuid')){
     getCookie(cookie);
   } else{
       setCookie();
@@ -44,7 +44,7 @@ $scope.chosen;
       $.ajax({
         type:'POST',
         url:root+'ipcheck.php',
-        data:{'ip':$scope.uid},
+        data:{'uuid':$scope.uuid},
         success:function(data){
           data=JSON.parse(data);
           if(data.length>0){
@@ -81,7 +81,7 @@ $scope.chosen;
   $scope.usernameChange=function(){
     $.ajax({
       type:'POST',
-      data:{'uid':$scope.uid},
+      data:{'uuid':$scope.uuid},
       url:root+'userdel.php',
       success:function(data){
         $scope.username="";
@@ -95,10 +95,11 @@ $scope.chosen;
     }else{
       if($scope.username==null && document.getElementById('username').value){
         $scope.username=document.getElementById('username').value;
+        console.log($scope.username);
         $.ajax({
           type:'POST',
           url:root+'username.php',
-          data:{'username':$scope.username},
+          data:{'username':$scope.username,'uuid':$scope.uuid},
           success:function(data){
             $scope.trial=true;
           }
@@ -122,7 +123,7 @@ $scope.serena=function($event){
         $.ajax({
           type:'POST',
           url:root+'moredb.php',
-          data:{'name':'serena','ip':$scope.uid},
+          data:{'name':'serena','uuid':$scope.uuid},
           success:function(result){
             if($scope.chosen=='tanisa'){
               $.ajax({
@@ -155,7 +156,7 @@ $scope.serena=function($event){
         $.ajax({
           type:'POST',
           url:root+'moredb.php',
-          data:{'name':'tanisa','ip':$scope.uid},
+          data:{'name':'tanisa','uuid':$scope.uuid},
           success:function(result){
             if($scope.chosen=='serena'){
               $.ajax({
