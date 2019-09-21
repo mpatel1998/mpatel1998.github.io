@@ -100,8 +100,9 @@ $scope.chosen;
           url:root+'username.php',
           data:{'username':$scope.username,'uuid':$scope.uuid},
           success:function(data){
+            var cookie=decodeURIComponent(document.cookie);
             $scope.trial=true;
-            document.cookie=document.cookie+";username="+$scope.username;
+            document.cookie=cookie+";username="+$scope.username;
             console.log(document.cookie);
             $scope.$apply();
           }
