@@ -95,16 +95,14 @@ $scope.chosen;
     }else{
       if($scope.username==null && document.getElementById('username').value){
         $scope.username=document.getElementById('username').value;
-        console.log($scope.username);
-        console.log($scope.uuid);
         $.ajax({
           type:'POST',
           url:root+'username.php',
           data:{'username':$scope.username,'uuid':$scope.uuid},
           success:function(data){
-            console.log("done")
             $scope.trial=true;
-            console.log($scope.trial);
+            document.cookie=document.cookie+";username="+$scope.username;
+            console.log(doucment.cookie);
             $scope.$apply();
           }
         });
