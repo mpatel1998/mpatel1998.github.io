@@ -105,6 +105,7 @@ $scope.chosen;
             console.log("done")
             $scope.trial=true;
             console.log($scope.trial);
+            $scope.$apply();
           }
         });
       }else{
