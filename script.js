@@ -56,7 +56,11 @@ $scope.chosen;
         } else{
           $scope.chosen="none";
         }
-
+        if(data[0]['username']===null || typeof data[0]['username']==='undefined'){
+          console.log("No Usernmae Registered");
+        } else{
+          $scope.username=data[0]['username'];
+        }
         }
       });
   $.ajax({
@@ -100,11 +104,7 @@ $scope.chosen;
           url:root+'username.php',
           data:{'username':$scope.username,'uuid':$scope.uuid},
           success:function(data){
-            var cookie=decodeURIComponent(document.cookie);
             $scope.trial=true;
-            console.log(cookie+";username="+$scope.username);
-            document.cookie=cookie+";username="+$scope.username;
-            console.log(document.cookie);
             $scope.$apply();
           }
         });
