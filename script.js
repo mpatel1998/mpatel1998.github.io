@@ -108,7 +108,7 @@ $scope.chosen;
   }
 }
   
-serena=function($event){
+$scope.serena=function($event){
     if($event.target.id.includes('ser-')||$scope.chosen=='serena'){
       return;
     }
