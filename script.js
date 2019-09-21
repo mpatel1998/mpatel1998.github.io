@@ -18,7 +18,7 @@ app.controller('ContestController',['$scope',function($scope){
 function getCookie(cookie){
   console.log(cookie);
   cookie.split(';').forEach(function(element){
-    if(element.includes('uuid')){
+    if(element.includes('uid')){
       $scope.uuid= element.split('=')[1];
     }
     if (element.includes('username')){
@@ -102,7 +102,7 @@ $scope.chosen;
           success:function(data){
             $scope.trial=true;
             document.cookie=document.cookie+";username="+$scope.username;
-            console.log(doucment.cookie);
+            console.log(document.cookie);
             $scope.$apply();
           }
         });
