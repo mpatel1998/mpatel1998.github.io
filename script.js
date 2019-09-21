@@ -60,6 +60,8 @@ $scope.chosen;
           console.log("No Usernmae Registered");
         } else{
           $scope.username=data[0]['username'];
+          console.log($scope.username)
+          $scope.$apply()
         }
         }
       });
