@@ -57,7 +57,8 @@ $scope.chosen;
           $scope.chosen="none";
         }
         if(data[0]['username']===null || typeof data[0]['username']==='undefined'){
-          console.log("No Usernmae Registered");
+          
+          console.log("No Username Registered");
         } else{
           $scope.username=data[0]['username'];
           console.log($scope.username)
@@ -91,6 +92,7 @@ $scope.chosen;
       url:root+'userdel.php',
       success:function(data){
         $scope.username="";
+        $scope.$apply();
       }
     })
   }
