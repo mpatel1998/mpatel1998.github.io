@@ -7,6 +7,7 @@ app.controller('ContestController',['$scope',function($scope){
   $scope.uid;
   $scope.username;
   function setCookie(){
+    console.log("Setting Cookie");
     var uid=Math.random();
     var date=new Date();
     date.setTime(date.getTime()+(100*24*60*60*1000));
