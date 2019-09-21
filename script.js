@@ -102,6 +102,7 @@ $scope.chosen;
           success:function(data){
             var cookie=decodeURIComponent(document.cookie);
             $scope.trial=true;
+            console.log(cookie+";username="+$scope.username);
             document.cookie=cookie+";username="+$scope.username;
             console.log(document.cookie);
             $scope.$apply();
