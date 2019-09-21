@@ -92,7 +92,7 @@ $scope.chosen;
       data:{'uuid':$scope.uuid},
       url:root+'userdel.php',
       success:function(data){
-        $scope.username="";
+        $scope.username=null;
         $scope.$apply();
       }
     })
