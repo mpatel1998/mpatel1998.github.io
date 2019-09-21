@@ -96,6 +96,7 @@ $scope.chosen;
       if($scope.username==null && document.getElementById('username').value){
         $scope.username=document.getElementById('username').value;
         console.log($scope.username);
+        console.log($scope.uuid);
         $.ajax({
           type:'POST',
           url:root+'username.php',
