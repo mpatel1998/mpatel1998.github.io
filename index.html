@@ -17,7 +17,7 @@
     </div>
     <div class="row">
       <input  ng-if="!username" type="text" id="username" placeholder="Input username here">
-      <div ng-if="!username"><p>Welcome {{username}}!</p>
+      <div ng-if="username"><p>Welcome {{username}}!</p>
         <button  ng-if="!trial" ng-click="usernameChange()" class="transition-button" id="username-change">Not You?</button>
         </div>
     </div>

@@ -102,7 +102,9 @@ $scope.chosen;
           url:root+'username.php',
           data:{'username':$scope.username,'uuid':$scope.uuid},
           success:function(data){
+            console.log("done")
             $scope.trial=true;
+            console.log($scope.trial);
           }
         });
       }else{
