@@ -257,7 +257,7 @@ $scope.serena=function($event){
                 }
               });
             }
-            $scope.chosen='tanisa';
+            $scope.chosen='sonam';
             $scope.$apply();
           }
         });
