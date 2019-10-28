@@ -97,7 +97,7 @@ background-image: url("tan1.jpg");
 #sonam{
   background-size: cover;
   background-image: url("son1.jpg");
-  float:left;
+  float:center;
   margin-left:50px;
 }
 .prev, .next{

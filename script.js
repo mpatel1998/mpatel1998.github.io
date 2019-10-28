@@ -302,7 +302,7 @@ $scope.backward=function($event){
 } else {
   if (soncurr>1){
     soncurr--;
-    $event.target.parentNode.parentNode.style.backgroundImage="url('son"+soncurr+"jpg;)";
+    $event.target.parentNode.parentNode.style.backgroundImage="url('son"+soncurr+"jpg')";
   }
 }
 }
