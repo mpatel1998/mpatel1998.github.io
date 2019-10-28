@@ -2,8 +2,9 @@ var app=angular.module("Contest",[]);
 app.controller('ContestController',['$scope',function($scope){
   $scope.sere;
   $scope.tan;
+  $scope.son;
+  $scope.serslide=[1,2,3,4,5]
   $scope.trial=false;
-  $scope.serslide=[1,2,3,4,5];
   $scope.uuid;
   $scope.username;
   function setCookie(){
@@ -38,7 +39,8 @@ function checkCookie(){
 checkCookie();
   var sercurr=1;
   var tancurr=1;
-  $scope.tanslide=[1,2,3,4,5];
+  var soncurr=1;
+  $scope.sonslide=[1,2,3,4,5];
   var root="http://mpatel98.gearhostpreview.com/";
 $scope.chosen;
       $.ajax({
@@ -85,6 +87,16 @@ $scope.chosen;
       $scope.tan=result[0]['tanisa'];
     }
   });
+
+  $.ajax({
+    type:'POST',
+    url:root+'db.php',
+    data:{'name':'sonam'},
+    success:function(data){
+      var result=JSON.parse(data)
+      $scope.son=result[0]['sonam']
+    }
+  })
   
   $scope.usernameChange=function(){
     $.ajax({
@@ -145,6 +157,17 @@ $scope.serena=function($event){
                 }
               });
             }
+            if ($scope.chosen == 'sonam'){
+              $.ajax({
+                type:'POST',
+                url:root+'otherdb.php',
+                data:{'name': 'sonam', 'count':0},
+                success:function(){
+                  $scope.son--;
+                  $scope.$apply();
+                }
+              });
+            }
             $scope.chosen='serena';
             $scope.$apply();
           }
@@ -178,6 +201,62 @@ $scope.serena=function($event){
                 }
               });
             }
+            if ($scope.chosen == 'sonam'){
+              $.ajax({
+                type:'POST',
+                url:root+'otherdb.php',
+                data:{'name': 'sonam', 'count':0},
+                success:function(){
+                  $scope.son--;
+                  $scope.$apply();
+                }
+              });
+            }
+            $scope.chosen='tanisa';
+            $scope.$apply();
+          }
+        });
+        }
+    });
+  }
+
+  $scope.sonam=function($event){
+    if($event.target.id.includes('son-')||$scope.chosen=='sonam'){
+      return;
+    }
+    $.ajax({
+      type:'POST',
+      url:root+'otherdb.php',
+      data:{'name':'sonam','count':1},
+      success:function(data){
+        $scope.son++;
+        $.ajax({
+          type:'POST',
+          url:root+'moredb.php',
+          data:{'name':'sonam','uuid':$scope.uuid},
+          success:function(result){
+            if($scope.chosen=='serena'){
+              $.ajax({
+                type:'POST',
+                url:root+'otherdb.php',
+                data:{'name':'serena','count':0},
+                success:function(){
+                  $scope.sere--;
+                  $scope.$apply();
+                }
+              });
+            }
+            if ($scope.chosen == 'tanisa'){
+              $.ajax({
+                type:'POST',
+                url:root+'otherdb.php',
+                data:{'name': 'tanisa', 'count':0},
+                success:function(){
+                  $scope.tan--;
+                  $scope.$apply();
+                }
+              });
+            }
             $scope.chosen='tanisa';
             $scope.$apply();
           }
@@ -196,10 +275,15 @@ $scope.serena=function($event){
         sercurr++;
         $event.target.parentNode.parentNode.style.backgroundImage="url('ser"+sercurr+".jpg')";
       }
-    } else{
+    } else if ($event.target.id.includes('tan')){
       if($scope.serslide.length!=tancurr){
         tancurr++;
         $event.target.parentNode.parentNode.style.backgroundImage="url('tan"+tancurr+".jpg')";
+    }
+  } else {
+    if ($scope.serslide.length!=soncurr) {
+      soncurr++;
+      $event.target.parentNode.parentNode.style.backgroundImage="url('son"+soncurr+".jpg')";
     }
   }
 }
@@ -209,10 +293,16 @@ $scope.backward=function($event){
       sercurr--;
       $event.target.parentNode.parentNode.style.backgroundImage="url('ser"+sercurr+".jpg')";
     }
-  } else{
+  } else if ($event.target.id.includes('tan')){
     if(tancurr>1){
       tancurr--;
       $event.target.parentNode.parentNode.style.backgroundImage="url('tan"+tancurr+".jpg')";
+  }
+  
+} else {
+  if (soncurr>1){
+    soncurr--;
+    $event.target.parentNode.parentNode.style.backgroundImage="url('son"+soncurr+"jpg;)";
   }
 }
 }
