@@ -16,7 +16,7 @@
     <h3> A contest hosted by Mohit Patel </h3>
     </div>
     <div class="row">
-      <input  ng-if="!username && !trial" type="text" id="username" placeholder="Input username here">
+      <input  ng-if="!username && !trial" type="text" id="username" placeholder="Input username here or enter Anon">
       <div ng-if="username"><p>Welcome {{username}}!</p>
         <button  ng-if="!trial" ng-click="usernameChange()" class="transition-button" id="username-change">Not You?</button>
         </div>
@@ -39,6 +39,12 @@
           <div class="row" id="clicker">
           <a id="tan-f"ng-click="backward($event)"class="prev">&#10094;</a>
           <a id="tan-b"ng-click="forward($event)"class="next">&#10095;</a> </div> </button>
+        </div>
+      <div class = "column">
+      <button ng-class="{chosen:chosen=='sonam'}" ng-click="sonam($event)" id="sonam" class="transition-button"> <span class="oldtext"> Sonam</span><span class="newtext" ng-model="son"> {{son}} </span>
+      <div class="row" id="clicker">
+          <a id="son-f"ng-click="backward($event)"class="prev">&#10094;</a>
+          <a id="son-b"ng-click="forward($event)"class="next">&#10095;</a> </div> </button>
         </div>
         <div class="modal" id="confirm">
           <span> Thank You for Recording Your Response.<br> Have a Great Day! </span>

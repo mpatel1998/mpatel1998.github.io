@@ -30,6 +30,13 @@ span{
      width:340px;
      position: relative;
  }
+
+ #username-change{
+  background-color:#ff7f50;
+  height:auto;
+  width:auto;
+ }
+
  #enter{
    background-color:#ff7f50;
    height:auto;
@@ -85,6 +92,13 @@ span{
    margin-left:50px;
    background-size: cover;
 background-image: url("tan1.jpg");
+}
+
+#sonam{
+  background-size: cover;
+  background-image: url("son1.jpg");
+  float:left;
+  margin-left:50px;
 }
 .prev, .next{
   margin-left:20px;
